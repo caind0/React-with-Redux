@@ -9,6 +9,10 @@ class App extends React.Component {
     //this is the only time we do direct assignment to this.state
     this.state = { lat: null, errorMessage: "" };
 
+    //another way to initialize state (Life Cycle Methods)
+  }
+
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (
         position //console.log(position.coords.latitude),
@@ -21,6 +25,10 @@ class App extends React.Component {
         this.setState({ errorMessage: err.message });
       }
     );
+  }
+
+  componentDidUpdate() {
+    console.log("My component was just updated, it rerendered! ");
   }
 
   //requirement by React
