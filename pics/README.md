@@ -1,3 +1,8 @@
+## App Challenges
+Need to get a search term from the user
+Need to use taht search term to make a request to an outside API and fetch data
+Need to take the fetched images adn show them on the screen in a list
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
