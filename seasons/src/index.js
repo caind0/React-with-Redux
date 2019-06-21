@@ -26,17 +26,22 @@ class App extends React.Component {
     console.log("My component was just updated, it rerendered! ");
   }
 
-  //requirement by React
-  //runs frequently
-  render() {
-    //conditionally render
+  //helper function to render content
+  renderContent(){
     if (this.state.errorMessage && !this.state.lat) {
       return <div> Error: {this.state.errorMessage}</div>;
     }
     if (!this.state.errorMessage && this.state.lat) {
       return <SeasonDisplay lat={this.state.lat} />;
     }
-    return <Spinner />
+    return <Spinner message="Please Accept Location Request"/>
+  }
+
+  //requirement by React
+  //runs frequently
+  render() {
+    return <div className="border">{this.renderContent()}</div>
+
   }
 }
 
