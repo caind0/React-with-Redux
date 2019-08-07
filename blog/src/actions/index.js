@@ -1,13 +1,16 @@
 import jsonPlaceholder from '../apis/jsonPlaceholder';
 
+// action creator to fetch all the posts
 export const fetchPosts = () => async dispatch => {
-    const response = await jsonPlaceholder.get('/posts');
+  // returns something similar to a promise. using async /await syntax
+  const response = await jsonPlaceholder.get("/posts");
 
-    dispatch({ type: 'FETCH_POSTS', payload: response.data})
+  // for the API payload response, we only want the data property
+  dispatch({ type: "FETCH_POSTS", payload: response.data });
 };
 
-// export const selectPost = () => {
-//   return {
-//     type: 'SELECT_POST'
-//   }
-// }
+export const fetchUser = id => async dispatch => {
+  const response = await jsonPlaceholder.get(`/users/${id}`);
+
+  dispatch({ type: "FETCH_USER", payload: response.data });
+};
