@@ -1,10 +1,13 @@
 import jsonPlaceholder from '../apis/jsonPlaceholder';
 
-export const fetchPosts = () => {
-  //bad approach breaking rules of action creator
-  return async (dispatch) => {
+export const fetchPosts = () => async dispatch => {
     const response = await jsonPlaceholder.get('/posts');
 
-    dispatch({ type: 'FETCH_POSTS', payload: response})
-  };
+    dispatch({ type: 'FETCH_POSTS', payload: response.data})
 };
+
+// export const selectPost = () => {
+//   return {
+//     type: 'SELECT_POST'
+//   }
+// }
