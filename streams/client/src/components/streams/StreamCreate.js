@@ -3,6 +3,8 @@ import React from 'react';
 //reduxForm is a func that has same functionality as connect function from react redux library, make sure
 //we can call some action creator and get some form data into our component.
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { createStream } from '../../actions';
 
 class StreamCreate extends React.Component {
   renderError({error,touched}){
@@ -30,8 +32,9 @@ class StreamCreate extends React.Component {
     );
   }
 
-  onSubmit(formValues){
-      console.log(formValues);
+  onSubmit = (formValues) => {
+      // console.log(formValues);
+      this.props.createStream(formValues);
   }
 
   render(){
@@ -61,7 +64,16 @@ const validate = (formValues) => {
   return errors;
 }
 
-export default reduxForm({
+//combine reduxform and connect
+// export default connect ()(reduxForm({
+//   form: 'STREAM_CREATE',
+//   validate: validate
+// })(StreamCreate));
+
+//OR
+const formWrapped = reduxForm({
   form: 'STREAM_CREATE',
   validate: validate
 })(StreamCreate);
+
+export default connect(null, { createStream })(formWrapped);
