@@ -16,7 +16,7 @@ class StreamList extends React.Component {
     if(stream.userId === this.props.currentUserId){
       return (
         <div className="right floated content">
-          <button className="ui button primary">Edit</button>
+          <Link to={`/streams/edit/${stream.id}`} className="ui button primary">Edit</Link>
           <button className="ui button negative">Delete</button>
         </div>
       );
@@ -39,10 +39,9 @@ class StreamList extends React.Component {
   }
 
   renderCreate(){
-    //check if user is signed in
-    if(this.props.isSignedin){
+    if(this.props.isSignedIn){
       return (
-        <div style={{ textAlign: 'right' }}>
+        <div>
           <Link to="/streams/new" className="ui button primary">
             Create Stream
           </Link>
@@ -57,7 +56,9 @@ class StreamList extends React.Component {
       <div>
         <h2>Streams</h2>
         <div className="ui celled list">{this.renderList()}</div>
-        {this.renderCreate()}
+        <div>
+          {this.renderCreate()}
+        </div>
       </div>
     );
   }
@@ -68,7 +69,7 @@ const mapStateToProps = (state) => {
   return {
     streams: Object.values(state.streams),
     currentUserId: state.auth.userId,
-    isSignedin: state.auth.isSignedin
+    isSignedIn: state.auth.isSignedIn
   };
 
 };
