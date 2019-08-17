@@ -18,9 +18,8 @@ export default (state = {}, action) => {
     case EDIT_STREAM:
       return { ...state, [action.payload.id]: action.payload };
     case DELETE_STREAM:
-      //no id bc when we dispatch in actions/index.js we have the id in the payload already
-      return _.omit(...state, action.payload)
+      return _.omit(state, action.payload);
     default:
       return state;
   }
-}
+};
