@@ -1,8 +1,11 @@
 //create basic sxpress server
-
 const express = require('express');
-
+const connectDB = require('./config/db');
 const app = express();
+
+//Connect Database
+connectDB();
+
 app.get('/',(req,res)=> res.send({msg: "Welcome to the phonebook api"}));
 
 //Define Routes
