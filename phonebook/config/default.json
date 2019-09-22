@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://admin:password1234@freecodecamp-b6qlp.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://admin:password1234@freecodecamp-b6qlp.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "secret"
 }
