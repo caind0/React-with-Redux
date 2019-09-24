@@ -13,19 +13,12 @@ const {
 const User = require('../models/User');
 
 
+const controller = require('../controllers/auth');
+
 // @route   GET api/auth
 // @desc    get logged in user
 // @access  Private **bring in middleware
-router.get('/', auth, async (req, res) => {
-    try {
-        //get everything in user except the pssword
-        const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
-    } catch (err) {
-        console.log(err.message);
-        res.status(500).send('Server Error');
-    }
-});
+router.get('/', auth, controller.getUser);
 
 // @route   POST api/users
 // @desc    Auth user & get token
