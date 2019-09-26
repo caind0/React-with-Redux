@@ -6,7 +6,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import "./App.css";
 
-App = () => {
+const App = () => {
   return (
     <Router>
       <Fragment>
