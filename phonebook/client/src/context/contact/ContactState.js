@@ -1,8 +1,8 @@
-import React, { useReducer } from "reactr";
+import React, { useReducer } from "react";
 import uuid from "uuid";
 import ContactContext from "./ContactContext";
 import ContactReducer from "./ContactReducer";
-import { ADD_CONTACT, DELETE_CONTACT, SET_CONTACT, CLEAR_CONTACT, UPDATE_CONTACT, FILTER_CONTACT, CLEAR_CONTACT, SET_CONTACT, REMOVE_CONTACT } from "../types";
+import { ADD_CONTACT, DELETE_CONTACT, SET_CONTACT, CLEAR_CONTACT, UPDATE_CONTACT, FILTER_CONTACT, REMOVE_CONTACT } from "../types";
 
 const ContactState = props => {
   const initialState = {
@@ -28,4 +28,16 @@ const ContactState = props => {
   //Filter Contact
 
   //Cleat Contact
+
+  return (
+    <ContactContext.Provider
+      value={{
+        contacts: state.contacts
+      }}
+    >
+      {props.children}
+    </ContactContext.Provider>
+  );
 };
+
+export default ContactState;
