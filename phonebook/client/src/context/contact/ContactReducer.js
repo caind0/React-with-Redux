@@ -1,4 +1,4 @@
-import { ADD_CONTACT, DELETE_CONTACT, SET_CONTACT, CLEAR_CONTACT, UPDATE_CONTACT, FILTER_CONTACT } from "../types";
+import { ADD_CONTACT, DELETE_CONTACT, SET_CONTACT, CLEAR_CONTACT, UPDATE_CONTACT, FILTER_CONTACT, CLEAR_FILTER } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -26,6 +26,20 @@ export default (state, action) => {
       return {
         ...state,
         current: action.payload
+      };
+    case FILTER_CONTACT:
+      return {
+        ...state,
+        filtered: state.contacts.filter(contact => {
+          //regex to match name that was passed in
+          const regex = new RegExp(`${action.payload}`, "gi");
+          return contact.name.match(regex);
+        })
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null
       };
     default:
       return state;
